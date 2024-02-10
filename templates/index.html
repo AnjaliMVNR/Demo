@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +18,7 @@
                     Iris Classification
                 </h2>
             </div>
-            <form class="card-form" action="/" method="POST">
+            <form class="card-form" action="{{ url_for('home')}}" method="POST">
                 <div class="input">
                     <input name="SepalLength" type="number" step="any"  class="input-field" required/>
                     <label  class="input-label"> Sepal Length in cm</label>
@@ -41,8 +40,8 @@
                 </div>
             </form>
 
-            <center><p style="color: darkred; font-weight: bold;"></p>
-		<img src="" alt="">
+            <center><p style="color: darkred; font-weight: bold;">{{ prediction }}</p>
+		<img src="{{ image }}" alt="{{ prediction }}">
 </center>
         </div>
     </div>
