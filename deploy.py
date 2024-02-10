@@ -4,8 +4,6 @@ from sklearn.preprocessing import StandardScaler
 import joblib as joblib
 import os
 
-model = joblib.load('saved_model1.pkl')
-scaler = joblib.load('scaler.save')
 
 app = Flask(__name__)
 
@@ -17,10 +15,15 @@ app.config['UPLOAD_FOLDER'] = IMG_FOLDER
 def index():
     return render_template('index.html')
 
+def load_data():    
+    model = joblib.load('saved_model1.pkl')
+    scaler = joblib.load('scaler.save')
+    return model, scaler
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
+        model, scaler = load_data()
         sl = request.form['SepalLength']
         sw = request.form['SepalWidth']
         pl = request.form['PetalLength']
