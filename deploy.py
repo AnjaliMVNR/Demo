@@ -20,13 +20,6 @@ def index():
 def load_data():
     model = joblib.load('saved_model1.pkl')
     scaler = joblib.load('scaler.save')
-    #with open('saved_model1.pkl', 'rb') as f:
-        #model = pickle.load(f)
-    #with open('scaler.save', 'rb') as f:
-        #scaler = pickle.load(f)
-        # Ensure that the loaded object is a scaler
-        #if not isinstance(scaler, StandardScaler):
-            #raise ValueError("The loaded object is not a StandardScaler instance.")
     return model, scaler
 
 
